@@ -1,9 +1,10 @@
 
 const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const bodyParser = require('body-parser');
 const sessionMiddleware = require('./modules/session-middleware');
 
 const passport = require('./strategies/user.strategy');
@@ -19,6 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(sessionMiddleware);
 
 // start up passport sessions
+app.use(cors());
 app.use(passport.initialize());
 app.use(passport.session());
 
