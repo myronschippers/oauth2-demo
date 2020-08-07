@@ -64,10 +64,10 @@ passport.use(
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: "/auth/google/callback"
     },
-    (accessToken, refreshToken, profile, cb) => {
+    (accessToken, refreshToken, profile, done) => {
       console.log('google oAuth2:', JSON.stringify(profile));
       user = { ...profile };
-      return cb(null, profile);
+      return done(null, profile);
     }
   )
 );
