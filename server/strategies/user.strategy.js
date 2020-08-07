@@ -1,7 +1,9 @@
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
 const encryptLib = require('../modules/encryption');
 const pool = require('../modules/pool');
+
+const LocalStrategy = require('passport-local').Strategy;
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -53,5 +55,21 @@ passport.use('local', new LocalStrategy((username, password, done) => {
         done(error, null);
       });
   }));
+
+// GOOGLE OAUTH2 STRATEGY
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: "/auth/google/callback"
+    },
+    (accessToken, refreshToken, profile, cb) => {
+      console.log('google oAuth2:', JSON.stringify(profile));
+      user = { ...profile };
+      return cb(null, profile);
+    }
+  )
+);
 
 module.exports = passport;
