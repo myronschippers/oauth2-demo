@@ -113,3 +113,21 @@ This code is also heavily commented. We recommend reading through the comments, 
 ## Update Documentation
 
 Customize this ReadMe and the code comments in this project to read less like a starter repo and more like a project. Here is an example: https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
+
+## Google Settings
+
+Go to [Google console](https://console.developers.google.com/) & login
+[Setup Screenshots](https://ktor.io/quickstart/guides/oauth.html)
+Create Project
+Enable APIs & Services
+Create Credentials
+you will be prompted to setup the **OAuth consent screen** if it is not already
+Set to external *btn* Create
+fill out oAuth screen info
+Back in Credentials tab refresh the page
+
+## References
+
+[Repo](https://github.com/rmbh4211995/passport-react)
+[Video for Repo](https://www.youtube.com/watch?v=A23O4aUftXk)
+[article](https://medium.com/better-programming/building-secure-login-flow-with-oauth-2-openid-in-react-apps-ce6e8e29630a)
